@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public interface TaskDao extends CrudRepository<Task, Integer> {
+public interface TaskDao extends CrudRepository<Task, Long> {
 }
