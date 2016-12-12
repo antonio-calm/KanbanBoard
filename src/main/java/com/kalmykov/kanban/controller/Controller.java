@@ -3,10 +3,7 @@ package com.kalmykov.kanban.controller;
 import com.kalmykov.kanban.dao.TaskDao;
 import com.kalmykov.kanban.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,20 +12,26 @@ public class Controller{
     @Autowired
     private TaskDao taskDao;
 
-    @RequestMapping("/tasks")
+    @RequestMapping(value ="/tasks", method = RequestMethod.GET)
     public List<Task> getTasks(){
         return (List<Task>)taskDao.findAll();
     }
 
-    @RequestMapping("/tasks/add")
+    @RequestMapping(value = "/tasks/add", method = RequestMethod.POST)
     public void addTask(@RequestParam(value = "title") String title,
                         @RequestParam(value = "description") String description,
                         @RequestParam(value = "status") String status){
         taskDao.save(new Task(null, title, description, status));
     }
 
-    @RequestMapping("/task/{id}")
+    @RequestMapping(value = "/task/{id}", method = RequestMethod.DELETE)
     public void removeTask(@PathVariable Long id){
         taskDao.delete(id);
+    }
+
+    @RequestMapping(value = "/task/{id}", method = RequestMethod.PUT)
+    public void updateTaskStatus(@PathVariable Long id,
+                                 @RequestParam(value = "status") String status){
+        taskDao.findOne(id).setStatus(status);
     }
 }
