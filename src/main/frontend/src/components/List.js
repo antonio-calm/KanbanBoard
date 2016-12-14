@@ -7,7 +7,7 @@ class List extends Component {
     getAddButtonForTODO(){
         if (this.props.id === "todo"){
             return(
-                <AddButton/>
+                <AddButton onAddCard={this.props.onAddCard}/>
             );
         }
     }
@@ -16,7 +16,8 @@ class List extends Component {
             return <Card id={card.id}
                          title={card.title}
                          description={card.description}
-                         status={card.status}/>
+                         status={card.status}
+                         onDeleteCard={this.props.onDelete}/>
         });
         return (
             <div className="list">

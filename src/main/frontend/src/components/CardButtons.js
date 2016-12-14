@@ -18,7 +18,7 @@ class CardButtons extends Component{
         return(
             <div className="card-buttons-group">
               <ButtonGroup justified>
-                <Button bsStyle="danger" bsSize="small" href="#">
+                <Button bsStyle="danger" bsSize="small" href="#" onClick={() => this.props.onDeleteCard(this.props.id)}>
                   Remove
                 </Button>
                 <Button bsStyle="success" bsSize="small" href="#">

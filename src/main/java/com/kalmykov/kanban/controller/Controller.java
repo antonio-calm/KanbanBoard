@@ -1,37 +1,44 @@
 package com.kalmykov.kanban.controller;
 
-import com.kalmykov.kanban.dao.TaskDao;
-import com.kalmykov.kanban.model.Task;
+import com.kalmykov.kanban.dao.CardDao;
+import com.kalmykov.kanban.model.Card;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
 public class Controller{
     @Autowired
-    private TaskDao taskDao;
+    private CardDao cardDao;
 
-    @RequestMapping(value ="/tasks", method = RequestMethod.GET)
-    public List<Task> getTasks(){
-        return (List<Task>)taskDao.findAll();
+    @PostConstruct
+    public void generate() {
+        cardDao.save(new Card(null, "Work", "Work hard!", "todo"));
+        cardDao.save(new Card(null, "Study", "Study hard!", "doing"));
+        cardDao.save(new Card(null, "Sleep", "Sleep hard!", "done"));
     }
 
-    @RequestMapping(value = "/tasks/add", method = RequestMethod.POST)
-    public void addTask(@RequestParam(value = "title") String title,
-                        @RequestParam(value = "description") String description,
-                        @RequestParam(value = "status") String status){
-        taskDao.save(new Task(null, title, description, status));
+    @RequestMapping(value ="/cards", method = RequestMethod.GET)
+    public List<Card> getCards(){
+        return (List<Card>) cardDao.findAll();
     }
 
-    @RequestMapping(value = "/task/{id}", method = RequestMethod.DELETE)
-    public void removeTask(@PathVariable Long id){
-        taskDao.delete(id);
+    @RequestMapping(value = "/cards/add", method = RequestMethod.POST)
+    public void addCard(@RequestParam(value = "title") String title,
+                        @RequestParam(value = "description") String description){
+        cardDao.save(new Card(null, title, description, "todo"));
     }
 
-    @RequestMapping(value = "/task/{id}", method = RequestMethod.PUT)
-    public void updateTaskStatus(@PathVariable Long id,
+    @RequestMapping(value = "/card/delete/{id}", method = RequestMethod.POST)
+    public void deleteCard(@PathVariable long id){
+        cardDao.delete(id);
+    }
+
+    @RequestMapping(value = "/cards/{id}", method = RequestMethod.PUT)
+    public void updateCardStatus(@PathVariable Long id,
                                  @RequestParam(value = "status") String status){
-        taskDao.findOne(id).setStatus(status);
+        cardDao.findOne(id).setStatus(status);
     }
 }
