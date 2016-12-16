@@ -8,24 +8,27 @@ class KanbanBoard extends Component {
             <Grid>
                 <Row className="show-grid">
                     <Col sm={4} md={4}>
-                        <List id={"todo"} 
-                        title="TO DO" 
-                        cards={this.props.cards.filter((card) => card.status === "todo")} 
+                        <List id={"todo"}
+                        title="TO DO"
+                        cards={this.props.cards.filter((card) => card.status === "todo")}
                         onDeleteCard={this.props.onDeleteCard}
+                        onChangeCardStatus={this.props.onChangeCardStatus}
                         onAddCard={this.props.onAddCard}/>
                     </Col>
                     <Col sm={4} md={4}>
-                        <List id="doing" 
-                        title="DOING..." 
+                        <List id="doing"
+                        title="DOING..."
                         cards={this.props.cards.filter((card) => card.status === "doing")}
-                        onDeleteCard={this.props.onDeleteCard}/>
+                        onDeleteCard={this.props.onDeleteCard}
+                        onChangeCardStatus={this.props.onChangeCardStatus}/>
                     </Col>
                     <Col sm={4} md={4}>
-                        <List 
-                        id="done" 
-                        title="DONE!" 
+                        <List
+                        id="done"
+                        title="DONE!"
                         cards={this.props.cards.filter((card) => card.status === "done")}
-                        onDeleteCard={this.props.onDeleteCard}/>
+                        onDeleteCard={this.props.onDeleteCard}
+                        onChangeCardStatus={this.props.onChangeCardStatus}/>
                     </Col>
                 </Row>
             </Grid>

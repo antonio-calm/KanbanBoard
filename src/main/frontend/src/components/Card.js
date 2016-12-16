@@ -32,7 +32,11 @@ class Card extends Component{
                             <p className="card-description">
                                 {this.props.description}
                             </p>
-                            <CardButtons status={this.props.status} id={this.props.id} onDeleteCard={this.props.onDeleteCard}/>
+                            <CardButtons
+                            status={this.props.status}
+                            id={this.props.id}
+                            onDeleteCard={this.props.onDeleteCard}
+                            onChangeCardStatus={this.props.onChangeCardStatus}/>
                         </Well>
                     </div>
                 </Collapse>

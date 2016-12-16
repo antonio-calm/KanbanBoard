@@ -21,7 +21,7 @@ class CardButtons extends Component{
                 <Button bsStyle="danger" bsSize="small" href="#" onClick={() => this.props.onDeleteCard(this.props.id)}>
                   Remove
                 </Button>
-                <Button bsStyle="success" bsSize="small" href="#">
+                <Button bsStyle="success" bsSize="small" href="#" onClick={() => this.props.onChangeCardStatus(this.props.id, this.props.status)}>
                     {this.getButtonName()}
                 </Button>
               </ButtonGroup>

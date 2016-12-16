@@ -6,18 +6,10 @@ class AddButton extends Component {
         super(...args);
 
         this.state = {};
-        this.title = "";
-        this.description = "";
+        this.state.title = "";
+        this.state.description = "";
     }
-    
-    handleTitleChange(e) {
-        this.setState({title: e.target.value});
-    }
-        
-    handleDescriptionChange(e) {
-        this.setState({description: e.target.value});
-    }
-    
+
     render(){
         return(
             <div>
@@ -32,18 +24,20 @@ class AddButton extends Component {
                       <FormGroup>
                         <FormControl id="input-title"
                                      type="text"
+                                     value={this.state.title}
                                      placeholder="Enter task title"
-                                     onChange={this.handleTitleChange}
+                                     onChange={(event) => {this.setState({title: event.target.value})}}
                         />
                         <FormControl id="input-description"
                                      componentClass="textarea"
+                                     value={this.state.description}
                                      placeholder="Enter task description"
-                                     onChange={this.handleDescriptionChange}
+                                     onChange={(event) => {this.setState({description: event.target.value})}}
                         />
                         <Button bsStyle="success" bsSize="small" block
                             onClick={() => {
-                                     this.setState({title:"", text:""});
-                                     this.props.onAddCard(this.state.title, this.state.description);
+                                      this.setState({title:"", description:""});
+                                      this.props.onAddCard(this.state.title, this.state.description);
                                     }}>
                           Add
                         </Button>

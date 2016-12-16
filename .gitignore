@@ -1,8 +1,5 @@
 # Created by https://www.gitignore.io/api/java,eclipse,intellij,maven,jetbrains
 
-#DELETE WHEN H@
-application.properties
-
 ### Eclipse ###
 
 .metadata

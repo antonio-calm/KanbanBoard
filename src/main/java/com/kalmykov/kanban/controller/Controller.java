@@ -15,9 +15,10 @@ public class Controller{
 
     @PostConstruct
     public void generate() {
-        cardDao.save(new Card(null, "Work", "Work hard!", "todo"));
-        cardDao.save(new Card(null, "Study", "Study hard!", "doing"));
-        cardDao.save(new Card(null, "Sleep", "Sleep hard!", "done"));
+        cardDao.save(new Card(null, "Learn something", "Something does not mean anything, ok? Something not stupid, ok?", "todo"));
+        cardDao.save(new Card(null, "Become superstar", "Rockstar will also work, or something like Bruce Willis.", "todo"));
+        cardDao.save(new Card(null, "Live a life", "Well start from birth, and finish with death. Not so hard.", "doing"));
+        cardDao.save(new Card(null, "Become cool", "You know what I mean.", "done"));
     }
 
     @RequestMapping(value ="/cards", method = RequestMethod.GET)
@@ -31,14 +32,17 @@ public class Controller{
         cardDao.save(new Card(null, title, description, "todo"));
     }
 
-    @RequestMapping(value = "/card/delete/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/card/{id}", method = RequestMethod.DELETE)
     public void deleteCard(@PathVariable long id){
         cardDao.delete(id);
     }
 
-    @RequestMapping(value = "/cards/{id}", method = RequestMethod.PUT)
-    public void updateCardStatus(@PathVariable Long id,
+    @RequestMapping(value = "/card/{id}", method = RequestMethod.PUT)
+    public void updateCardStatus(@PathVariable long id,
                                  @RequestParam(value = "status") String status){
-        cardDao.findOne(id).setStatus(status);
+
+        Card card = cardDao.findOne(id);
+        card.setStatus(status);
+        cardDao.save(card);
     }
 }
