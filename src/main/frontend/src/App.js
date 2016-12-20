@@ -46,7 +46,7 @@ class App extends Component {
       } else if (current_status === "doing"){
         new_status = "done";
       } else if (current_status === "done") {
-        new_status = "doing";
+        new_status = "todo";
       }
 
       $.ajax({
