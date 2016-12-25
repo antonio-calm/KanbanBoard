@@ -16,7 +16,7 @@ public class Controller{
     @PostConstruct
     public void generate() {
         cardDao.save(new Card(null, "Learn something", "Something does not mean anything, ok? Something not stupid, ok?", Card.Status.TODO));
-        cardDao.save(new Card(null, "Become superstar", "Rockstar will also work, or something like Bruce Willis.", Card.Status.TODO));
+        cardDao.save(new Card(null, "Become superstar", "Rockstar will also work, or something like Bruce Willis.", Card.Status.DONE));
         cardDao.save(new Card(null, "Live a life", "Well start from birth, and finish with death. Not so hard.", Card.Status.DOING));
         cardDao.save(new Card(null, "Become cool", "You know what I mean.", Card.Status.DONE));
     }
