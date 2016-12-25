@@ -4,12 +4,11 @@ import {ButtonGroup, Button} from 'react-bootstrap';
 class CardButtons extends Component{
 
     getButtonName(){
-        if (this.props.status === "todo") {
+        if (this.props.status === "TODO") {
             return "Start";
-        }
-        else if (this.props.status === "doing") {
+        } else if (this.props.status === "DOING") {
             return "Done";
-        } else {
+        } else if (this.props.status === "DONE") {
             return "Redo";
         }
     }

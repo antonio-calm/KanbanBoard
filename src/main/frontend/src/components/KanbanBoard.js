@@ -10,7 +10,7 @@ class KanbanBoard extends Component {
                     <Col sm={4} md={4}>
                         <List id={"todo"}
                         title="TO DO"
-                        cards={this.props.cards.filter((card) => card.status === "todo")}
+                        cards={this.props.cards.filter((card) => card.status === "TODO")}
                         onDeleteCard={this.props.onDeleteCard}
                         onChangeCardStatus={this.props.onChangeCardStatus}
                         onAddCard={this.props.onAddCard}/>
@@ -18,7 +18,7 @@ class KanbanBoard extends Component {
                     <Col sm={4} md={4}>
                         <List id="doing"
                         title="DOING..."
-                        cards={this.props.cards.filter((card) => card.status === "doing")}
+                        cards={this.props.cards.filter((card) => card.status === "DOING")}
                         onDeleteCard={this.props.onDeleteCard}
                         onChangeCardStatus={this.props.onChangeCardStatus}/>
                     </Col>
@@ -26,7 +26,7 @@ class KanbanBoard extends Component {
                         <List
                         id="done"
                         title="DONE!"
-                        cards={this.props.cards.filter((card) => card.status === "done")}
+                        cards={this.props.cards.filter((card) => card.status === "DONE")}
                         onDeleteCard={this.props.onDeleteCard}
                         onChangeCardStatus={this.props.onChangeCardStatus}/>
                     </Col>

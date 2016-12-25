@@ -10,12 +10,11 @@ class Card extends Component{
     }
 
     getButtonStyle(){
-        if (this.props.status === "todo") {
+        if (this.props.status === "TODO") {
             return "info";
-        }
-        else if (this.props.status === "doing") {
+        } else if (this.props.status === "DOING") {
             return "warning";
-        } else {
+        } else if (this.props.status === "DONE") {
             return "success";
         }
     }

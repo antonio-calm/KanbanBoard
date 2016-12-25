@@ -30,7 +30,7 @@ public class ControllerTests {
     @Test
     public void testAddCard(){
         controller.addCard("testTitle", "testDescription");
-        verify(cardDao).save(new Card(null, "testTitle", "testDescription", "todo"));
+        verify(cardDao).save(new Card(null, "testTitle", "testDescription", Card.Status.TODO));
     }
 
     @Test
@@ -44,9 +44,8 @@ public class ControllerTests {
     public void testUpdateCardStatus(){
         long id = 12345;
         when(cardDao.findOne(id)).thenReturn(new Card(id, "testTitle", "testDescription", null));
-        controller.updateCardStatus(id, "testStatus");
+        controller.updateCardStatus(id, Card.Status.TODO);
         verify(cardDao).findOne(id);
-        verify(cardDao).save(new Card(id, "testTitle", "testDescription", "testStatus"));
+        verify(cardDao).save(new Card(id, "testTitle", "testDescription", Card.Status.TODO));
     }
-
 }

@@ -41,12 +41,12 @@ class App extends Component {
 
     onChangeCardStatus(id, current_status){
       let new_status = "";
-      if (current_status === "todo") {
-        new_status = "doing";
-      } else if (current_status === "doing"){
-        new_status = "done";
-      } else if (current_status === "done") {
-        new_status = "todo";
+      if (current_status === "TODO") {
+        new_status = "DOING";
+      } else if (current_status === "DOING"){
+        new_status = "DONE";
+      } else if (current_status === "DONE") {
+        new_status = "TODO";
       }
 
       $.ajax({

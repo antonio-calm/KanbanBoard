@@ -21,6 +21,10 @@ public class Card {
     @NotNull
     private String description;
     @NotNull
-    private String status;
+    private Status status;
+
+    public enum Status {
+        TODO, DOING, DONE
+    }
 }
 
